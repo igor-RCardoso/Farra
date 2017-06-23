@@ -24,6 +24,11 @@ public class Tags {
 
     public Tags(){}
 
+    public Tags(int id, String descricao, String nome) {
+        this.id = id;
+        this.descricao = descricao;
+        this.nome = nome;
+    }
 
     public int getId() {
         return id;

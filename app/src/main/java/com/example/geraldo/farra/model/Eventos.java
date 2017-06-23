@@ -27,7 +27,7 @@ public class Eventos implements Serializable{
     private String horario;
 
     @DatabaseField(canBeNull = false)
-    private Date dataEvento;
+    private String dataEvento;
 
     @DatabaseField(canBeNull = false)
     private int faixaEtaria;
@@ -48,6 +48,17 @@ public class Eventos implements Serializable{
     private Collection<Ingresso> ingressoCollection;
 
     public Eventos(){}
+
+    public Eventos(int id, String nomeEvento, String endereco, String horario, String dataEvento, int faixaEtaria, String tema, String tipo) {
+        this.id = id;
+        this.nomeEvento = nomeEvento;
+        this.endereco = endereco;
+        this.horario = horario;
+        this.dataEvento = dataEvento;
+        this.faixaEtaria = faixaEtaria;
+        this.tema = tema;
+        this.tipo = tipo;
+    }
 
     public int getId() {
         return id;
@@ -81,11 +92,11 @@ public class Eventos implements Serializable{
         this.horario = horario;
     }
 
-    public Date getDataEvento() {
+    public String getDataEvento() {
         return dataEvento;
     }
 
-    public void setDataEvento(Date dataEvento) {
+    public void setDataEvento(String dataEvento) {
         this.dataEvento = dataEvento;
     }
 

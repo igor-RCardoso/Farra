@@ -3,6 +3,7 @@ package com.example.geraldo.farra.controller;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,10 +15,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.geraldo.farra.R;
+import com.example.geraldo.farra.dao.OrganizadorDao;
+import com.example.geraldo.farra.dao.UsuarioDao;
+import com.example.geraldo.farra.model.Organizador;
+import com.example.geraldo.farra.model.Usuario;
+import com.example.geraldo.farra.util.DatabaseHelper;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PrincipalUsuarioActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    private DatabaseHelper dh;
+    private OrganizadorDao organizadorDao;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +44,30 @@ public class PrincipalUsuarioActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        Organizador organizador = new Organizador();
+        organizador.setId(1);
+        organizador.setCnpj("999999");
+        organizador.setEmailOrg("sdsa@fasd.com");
+        organizador.setEndereco("Viçosa");
+        organizador.setNoeFantasia("FestaTodosDias");
+        organizador.setNomeReal("FestaUmDiaSo");
+        dh = new DatabaseHelper(getBaseContext());
+        List<Organizador> organizadores = new ArrayList<Organizador>();
+        organizadores.add(organizador);
+        try {
+           // UsuarioDao usuarioDao= new UsuarioDao(dh.getConnectionSource());
+
+            organizadorDao = new OrganizadorDao(dh.getConnectionSource());
+            Log.i("Cadastrado", "result");
+            for(Organizador o : organizadores) {
+                int result = organizadorDao.create(o);
+                Log.i("Cadastrado", "result = " + result);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     @Override

@@ -24,9 +24,9 @@ import java.sql.SQLException;
  * Created by Geraldo on 22/06/2017.
  */
 
-public class DatabaseHelper<E> extends OrmLiteSqliteOpenHelper{
+public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
     private static final String databaseName = "farrago.db";
-    private static final int databaseVersion =  1;
+    private static final int databaseVersion =  2;
 
     private Dao<Usuario, Integer> usuarioDao = null;
     private RuntimeExceptionDao<Usuario, Integer> usuarioRuntimeDao = null;
@@ -51,7 +51,7 @@ public class DatabaseHelper<E> extends OrmLiteSqliteOpenHelper{
 
 
     public DatabaseHelper(Context context) {
-        super(context, databaseName, null, databaseVersion, R.raw.ormlite_config);
+        super(context, databaseName, null, databaseVersion);
     }
 
     @Override
