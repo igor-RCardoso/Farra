@@ -1,0 +1,272 @@
+#
+# generated on 2017/06/23 12:11:45
+#
+# --table-start--
+dataClass=com.example.geraldo.farra.model.CompraVenda
+tableName=compraVenda
+# --table-fields-start--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=avalicao
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=comentario
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=usuario
+foreign=true
+# --field-end--
+# --field-start--
+fieldName=itemDeCompraCollection
+foreignCollection=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.example.geraldo.farra.model.Eventos
+tableName=evento
+# --table-fields-start--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=nomeEvento
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=endereco
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=horario
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=dataEvento
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=faixaEtaria
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=tema
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=tipo
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=organizador
+foreign=true
+# --field-end--
+# --field-start--
+fieldName=tagsCollection
+foreignCollection=true
+# --field-end--
+# --field-start--
+fieldName=ingressoCollection
+foreignCollection=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.example.geraldo.farra.model.Ingresso
+tableName=ingresso
+# --table-fields-start--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=sexo
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=lote
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=preco
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=qtdDisponivel
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=evento
+foreign=true
+# --field-end--
+# --field-start--
+fieldName=organizador
+foreign=true
+# --field-end--
+# --field-start--
+fieldName=itemDeCompraCollection
+foreignCollection=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.example.geraldo.farra.model.ItemDeCompra
+tableName=itemDeCompra
+# --table-fields-start--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=compraVenda
+foreign=true
+# --field-end--
+# --field-start--
+fieldName=usuario
+foreign=true
+# --field-end--
+# --field-start--
+fieldName=ingresso
+foreign=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.example.geraldo.farra.model.Organizador
+tableName=organizador
+# --table-fields-start--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=noeFantasia
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=nomeReal
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=nomeResponsavel
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=emailOrg
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=senhaOrg
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=endereco
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=telefone
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=cnpj
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=eventosCollection
+foreignCollection=true
+# --field-end--
+# --field-start--
+fieldName=ingressoCollection
+foreignCollection=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.example.geraldo.farra.model.Tags
+tableName=tags
+# --table-fields-start--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=descricao
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=nome
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=evento
+foreign=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.example.geraldo.farra.model.Usuario
+tableName=usuario
+# --table-fields-start--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=nome
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=user
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=senhaUser
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=emailUser
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=telefone
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=cpf
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=dataNascimento
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=tipo
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=reputacao
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=compraVendaCollection
+foreignCollection=true
+# --field-end--
+# --field-start--
+fieldName=itemDeCompraCollection
+foreignCollection=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
