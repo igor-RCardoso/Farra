@@ -41,8 +41,6 @@ public class Organizador {
     @ForeignCollectionField
     private Collection<Eventos> eventosCollection;
 
-    @ForeignCollectionField
-    private Collection<Ingresso> ingressoCollection;
 
 
 
@@ -138,13 +136,5 @@ public class Organizador {
 
     public void setEventosCollection(Collection<Eventos> eventosCollection) {
         this.eventosCollection = eventosCollection;
-    }
-
-    public Collection<Ingresso> getIngressoCollection() {
-        return ingressoCollection;
-    }
-
-    public void setIngressoCollection(Collection<Ingresso> ingressoCollection) {
-        this.ingressoCollection = ingressoCollection;
     }
 }

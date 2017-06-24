@@ -30,8 +30,6 @@ public class Ingresso {
     @DatabaseField(foreign = true)
     private Eventos evento;
 
-    @DatabaseField(foreign = true)
-    private Organizador organizador;
 
     @ForeignCollectionField
     private Collection<ItemDeCompra> itemDeCompraCollection;
@@ -87,14 +85,6 @@ public class Ingresso {
 
     public void setEvento(Eventos evento) {
         this.evento = evento;
-    }
-
-    public Organizador getOrganizador() {
-        return organizador;
-    }
-
-    public void setOrganizador(Organizador organizador) {
-        this.organizador = organizador;
     }
 
     public Collection<ItemDeCompra> getItemDeCompraCollection() {
