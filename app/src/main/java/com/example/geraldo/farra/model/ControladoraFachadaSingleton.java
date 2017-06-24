@@ -1,5 +1,7 @@
 package com.example.geraldo.farra.model;
 
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.nfc.Tag;
 import android.support.annotation.Nullable;
@@ -62,6 +64,5 @@ public final class ControladoraFachadaSingleton implements Serializable{
 //            Log.e("Cadastrado", "erro", e);
 //            e.printStackTrace();
 //        }
-
     }
 }
