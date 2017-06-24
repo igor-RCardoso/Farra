@@ -49,9 +49,10 @@ public class PrincipalUsuarioActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
-        Log.i("Cadastrado", "oi");
+        Log.i("Cadastrado", "oi2");
+
         ControladoraFachadaSingleton cg = ControladoraFachadaSingleton.getOurInstance();
-        Log.i("Cadastrado", "oi");
+        Log.i("Cadastrado", "oi3");
     }
 
     @Override
