@@ -47,6 +47,19 @@ public class Organizador {
 
     public Organizador(){}
 
+
+    public Organizador(int id, String noeFantasia, String nomeReal, String nomeResponsavel, String emailOrg, String senhaOrg, String endereco, String telefone, String cnpj) {
+        this.id = id;
+        this.noeFantasia = noeFantasia;
+        this.nomeReal = nomeReal;
+        this.nomeResponsavel = nomeResponsavel;
+        this.emailOrg = emailOrg;
+        this.senhaOrg = senhaOrg;
+        this.endereco = endereco;
+        this.telefone = telefone;
+        this.cnpj = cnpj;
+    }
+
     public int getId() {
         return id;
     }

@@ -39,6 +39,8 @@ public class Ingresso {
 
     public Ingresso(){}
 
+
+
     public int getId() {
         return id;
     }

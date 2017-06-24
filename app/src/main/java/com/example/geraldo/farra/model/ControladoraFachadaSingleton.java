@@ -39,7 +39,6 @@ public class ControladoraFachadaSingleton implements Serializable{
         Eventos evento5 = new Eventos(5, "Rockzera", "Porto Firme", "12:00", "02/01/2018", 14, "Rock", "Metal");
         Eventos evento6 = new Eventos(6, "Aniversário do Julio", "Rio Grande do Sul", "24:00", "24/04/2024", 21, "Liberdade", "Arco Iris");
 
-        Organizador organizador1;
         Organizador organizador2;
         Organizador organizador3;
 
@@ -58,9 +57,19 @@ public class ControladoraFachadaSingleton implements Serializable{
 
         Usuario usuario1;
 
-        Tags tag1 = new Tags(1, "OpenBar", "Bebida liberada");
-        Tags tag2 = new Tags(2, "OpenFood", "Comida liberada");
-        Tags tag3 = new Tags(3, "Fantasia", "Venha fantasiado");
+        //Tags Esta pronto
+        Tags tag1 = new Tags(1, "OpenBar", "Bebida liberada", evento1);
+        Tags tag2 = new Tags(2, "OpenFood", "Comida liberada", evento2);
+        Tags tag3 = new Tags(3, "Fantasia", "Venha fantasiado", evento3);
+        Tags tag4 = new Tags(4, "Fantasia", "Venha fantasiado", evento4);
+        Tags tag5 = new Tags(5, "Fantasia", "Venha fantasiado", evento5);
+        Tags tag6 = new Tags(6, "Fantasia", "Venha fantasiado", evento6);
+        evento1.getTagsCollection().add(tag1);
+        evento2.getTagsCollection().add(tag2);
+        evento3.getTagsCollection().add(tag3);
+        evento4.getTagsCollection().add(tag4);
+        evento5.getTagsCollection().add(tag5);
+        evento6.getTagsCollection().add(tag6);
 
 
     }

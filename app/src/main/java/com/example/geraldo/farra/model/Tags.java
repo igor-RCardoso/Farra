@@ -24,10 +24,11 @@ public class Tags {
 
     public Tags(){}
 
-    public Tags(int id, String descricao, String nome) {
+    public Tags(int id, String descricao, String nome, Eventos evento) {
         this.id = id;
         this.descricao = descricao;
         this.nome = nome;
+        this.evento = evento;
     }
 
     public int getId() {
@@ -52,5 +53,13 @@ public class Tags {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public Eventos getEvento() {
+        return evento;
+    }
+
+    public void setEvento(Eventos evento) {
+        this.evento = evento;
     }
 }
