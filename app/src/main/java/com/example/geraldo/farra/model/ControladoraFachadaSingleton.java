@@ -14,6 +14,7 @@ import com.example.geraldo.farra.util.MyApp;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -47,10 +48,9 @@ public final class ControladoraFachadaSingleton implements Serializable{
             List<Organizador> aux1 = db.getOrganizadorDao().queryForAll();
             for(Organizador a : aux1) {
                 Log.i("Cadastrado", a.getId() + " " + a.getNoeFantasia());
-            }
-            List<Eventos> aux2 = db.getEventosDao().queryForAll();
-            for(Eventos a : aux2) {
-                Log.i("Cadastrado", a.getId() + " " + a.getNomeEvento());
+                for(Eventos b : a.getEventosCollection()) {
+                    Log.i("Cadastrado", "   " + b.getId() + " " + b.getNomeEvento());
+                }
             }
             List<Ingresso> aux3 = db.getIngressoDao().queryForAll();
             for(Ingresso a : aux3) {
@@ -65,18 +65,51 @@ public final class ControladoraFachadaSingleton implements Serializable{
                 Log.i("Cadastrado", a.getId() + " " + a.getAvalicao());
             }
             daoEventos();
+            usuario = db.getUsuarioDao().queryForId(2);
         } catch (SQLException e) {
             Log.e("Cadastrado", "erro_CFS construtor", e);
             e.printStackTrace();
         }
     }
 
+
     private void daoEventos() throws SQLException {
         eventos = db.getEventosDao().queryForAll();
     }
 
-    public List<Eventos> getEventos() throws SQLException {
+    public List<Eventos> getEventos() {
         return eventos;
+    }
+
+    public boolean comprarIngresso(Usuario u, Ingresso i[], int qtd[], int n) {
+        for(int j = 0; j < n; j++) {
+            if (qtd[j] > i[j].getQtdDisponivel()) {
+                return false;
+            }
+        }
+
+        for(ItemDeCompra it : u.getItemDeCompraCollection()) {
+            for(int j = 0; j < n; j++) {
+                if (it.getIngresso().getId() == i[j].getId()) {
+                    return false;
+                }
+            }
+        }
+
+        CompraVenda cv = new CompraVenda(" ", " ",u);
+
+        try {
+            db.getCompraVendaDao().create(cv);
+            for(int j = 0; j < n; j++) {
+                ItemDeCompra item = new ItemDeCompra(cv,u,i[j]);
+                db.getItemDeCompraDao().create(item);
+                i[j].setQtdDisponivel(i[j].getQtdDisponivel()-qtd[j]);
+                db.getIngressoDao().updateId(i[j],i[j].getId());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return true;
     }
 
 }

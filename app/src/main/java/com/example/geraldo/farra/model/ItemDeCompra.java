@@ -11,16 +11,22 @@ public class ItemDeCompra {
     @DatabaseField(generatedId = true)
     private int id;
 
-    @DatabaseField(foreign = true)
+    @DatabaseField(foreign = true, foreignAutoCreate = true)
     private CompraVenda compraVenda;
 
-    @DatabaseField(foreign = true)
+    @DatabaseField(foreign = true, foreignAutoCreate = true)
     private Usuario usuario;
 
-    @DatabaseField(foreign = true)
+    @DatabaseField(foreign = true, foreignAutoCreate = true)
     private Ingresso ingresso;
 
     public ItemDeCompra(){}
+
+    public ItemDeCompra(CompraVenda compraVenda, Usuario usuario, Ingresso ingresso) {
+        this.compraVenda = compraVenda;
+        this.usuario = usuario;
+        this.ingresso = ingresso;
+    }
 
     public int getId() {
         return id;

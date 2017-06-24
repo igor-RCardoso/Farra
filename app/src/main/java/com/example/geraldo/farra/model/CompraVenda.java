@@ -20,7 +20,14 @@ public class CompraVenda {
     @DatabaseField(canBeNull = false)
     private String comentario;
 
-    @DatabaseField(foreign = true)
+    public CompraVenda(String avaliacao, String comentario, Usuario usuario) {
+        this.avaliacao = avaliacao;
+        this.comentario = comentario;
+        this.usuario = usuario;
+    }
+
+    @DatabaseField(foreign = true, foreignAutoCreate = true)
+
     private Usuario usuario;
 
     @ForeignCollectionField
