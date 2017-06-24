@@ -38,7 +38,7 @@ public class Eventos implements Serializable{
     @DatabaseField(canBeNull = true)
     private String tipo;
 
-    @DatabaseField(foreign = true)
+    @DatabaseField(foreign = true, foreignAutoCreate = true)
     private Organizador organizador;
 
     @ForeignCollectionField
