@@ -1,7 +1,5 @@
 package com.example.geraldo.farra.model;
 
-import android.content.ContentValues;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.nfc.Tag;
 import android.support.annotation.Nullable;
@@ -40,29 +38,29 @@ public final class ControladoraFachadaSingleton implements Serializable{
     }
 
     private ControladoraFachadaSingleton() {
-        db = new DatabaseHelper(MyApp.getContext());
+        DatabaseHelper db = new DatabaseHelper(MyApp.getContext());
 
-        Log.i("Cadastrado", "oi");
-//        try {
-//            // UsuarioDao usuarioDao= new UsuarioDao(dh.getConnectionSource());
-//            UsuarioDao usuarioDao = new UsuarioDao(db.getConnectionSource());
-//            List<Usuario> aux3 = usuarioDao.queryForAll();
-//            for(Usuario o : aux3) {
-//                Log.i("Cadastrado", o.getId()+" "+o.getNome()+" "+o.getCpf());
-//            }
-//            OrganizadorDao organizadorDao = new OrganizadorDao(db.getConnectionSource());
-//            List<Organizador> aux = organizadorDao.queryForAll();
-//            for(Organizador o : aux) {
-//                Log.i("Cadastrado", o.getId()+" "+o.getCnpj()+" "+o.getEndereco());
-//            }
-//            EventoDao eventoDao = new EventoDao(db.getConnectionSource());
-//            List<Eventos> aux2 = eventoDao.queryForAll();
-//            for(Eventos o : aux2) {
-//                Log.i("Cadastrado", o.getId()+" "+o.getOrganizador().getNoeFantasia()+" "+o.getEndereco());
-//            }
-//        } catch (SQLException e) {
-//            Log.e("Cadastrado", "erro", e);
-//            e.printStackTrace();
-//        }
+        Log.i("Cadastrado", "oi1");
+        try {
+            // UsuarioDao usuarioDao= new UsuarioDao(dh.getConnectionSource());
+            UsuarioDao usuarioDao = new UsuarioDao(db.getConnectionSource());
+            List<Usuario> aux3 = usuarioDao.queryForAll();
+            for(Usuario o : aux3) {
+                Log.i("Cadastrado", o.getId()+" "+o.getNome()+" "+o.getCpf());
+            }
+            OrganizadorDao organizadorDao = new OrganizadorDao(db.getConnectionSource());
+            List<Organizador> aux = organizadorDao.queryForAll();
+            for(Organizador o : aux) {
+                Log.i("Cadastrado", o.getId()+" "+o.getCnpj()+" "+o.getEndereco());
+            }
+            EventoDao eventoDao = new EventoDao(db.getConnectionSource());
+            List<Eventos> aux2 = eventoDao.queryForAll();
+            for(Eventos o : aux2) {
+                Log.i("Cadastrado", o.getId()+" "+o.getOrganizador().getNoeFantasia()+" "+o.getEndereco());
+            }
+        } catch (SQLException e) {
+            Log.e("Cadastrado", "erro", e);
+            e.printStackTrace();
+        }
     }
 }

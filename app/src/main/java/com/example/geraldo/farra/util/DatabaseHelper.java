@@ -51,7 +51,7 @@ import java.util.concurrent.Callable;
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
     private static final String databaseName = "farrago.db";
-    private static final int databaseVersion =  30;
+    private static final int databaseVersion =  24;
 
     private Dao<Usuario, Integer> usuarioDao = null;
     private RuntimeExceptionDao<Usuario, Integer> usuarioRuntimeDao = null;
@@ -82,28 +82,26 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase, ConnectionSource connectionSource) {
         try {
-            Log.i("Cadastrado", "vai hein");
-                TableUtils.createTable(connectionSource, Usuario.class);
-                TableUtils.createTable(connectionSource, CompraVenda.class);
-                TableUtils.createTable(connectionSource, Eventos.class);
-                TableUtils.createTable(connectionSource, Ingresso.class);
-                TableUtils.createTable(connectionSource, ItemDeCompra.class);
-                TableUtils.createTable(connectionSource, Organizador.class);
-                TableUtils.createTable(connectionSource, Tags.class);
-                Log.i("Cadastrado", "vai hein");
-                getUsuarioDao().updateRaw("INSERT INTO Usuario(id,nome,user,senhaUser,emailUser,telefone,cpf,dataNascimento,tipo) VALUES" +
-                                "(0,'Fabio','Fabio','1234','fabio.godoy@ufv.br','9999999999','99999999999','05/11/1996',0)," +
-                                "(1,'Igor','Igor','1234','igor.cardoso@ufv.br','9999999999','99999999999','24/04/1994',0)," +
-                                "(2,'Julio','Julio','1234','julio.pinheiro@ufv.br','9999999999','99999999999','17/10/1996',0);");
-                getOrganizadorDao().updateRaw("INSERT INTO Organizador(id,noeFantasia,nomeReal,nomeResponsavel,emailOrg,senhaOrg,endereco,telefone,cnpj) VALUES" +
-                        "(0, 'Eventos Legais S/A', 'Evento Legais S/A', 'Joesley', 'eventoslegais@gmail.com', '1234', 'Brasil', '9999999999', '99999999999')," +
-                        "(1, 'Eventos Bacanas S/A', 'Eventos Bacanas S/A', 'Wesley', 'eventosbacanas@gmail.com', '1234', 'Brasil', '9999999999', '99999999999');");
-                getEventosDao().updateRaw("INSERT INTO Evento(id,Organizador_id,nomeEvento,endereco,horario,dataEvento,faixaEtaria,tema) VALUES" +
-                        "(0,0,'Evento muito legal', 'Brasil', '20:00', '08/07/2017', '16', 'Legal')," +
-                        "(1,0,'Evento super legal', 'Brasil', '20:00', '21/10/2017', '16', 'Super Legal')," +
-                        "(2,1,'Evento ultra legal', 'Brasil', '20:00', '30/11/2017', '16', 'Ultra Legal');");
+            TableUtils.createTable(connectionSource, Usuario.class);
+            TableUtils.createTable(connectionSource, CompraVenda.class);
+            TableUtils.createTable(connectionSource, Eventos.class);
+            TableUtils.createTable(connectionSource, Ingresso.class);
+            TableUtils.createTable(connectionSource, ItemDeCompra.class);
+            TableUtils.createTable(connectionSource, Organizador.class);
+            TableUtils.createTable(connectionSource, Tags.class);
 
-            Log.i("Cadastrado", "vai hein2");
+            getUsuarioDao().updateRaw("INSERT INTO Usuario(id,nome,user,senhaUser,emailUser,telefone,cpf,dataNascimento,tipo) VALUES" +
+                            "(0,'Fabio','Fabio','1234','fabio.godoy@ufv.br','9999999999','99999999999','05/11/1996',0)," +
+                            "(1,'Igor','Igor','1234','igor.cardoso@ufv.br','9999999999','99999999999','24/04/1994',0)," +
+                            "(2,'Julio','Julio','1234','julio.pinheiro@ufv.br','9999999999','99999999999','17/10/1996',0);");
+            getOrganizadorDao().updateRaw("INSERT INTO Organizador(id,noeFantasia,nomeReal,nomeResponsavel,emailOrg,senhaOrg,endereco,telefone,cnpj) VALUES" +
+                    "(0, 'Eventos Legais S/A', 'Evento Legais S/A', 'Joesley', 'eventoslegais@gmail.com', '1234', 'Brasil', '9999999999', '99999999999')," +
+                    "(1, 'Eventos Bacanas S/A', 'Eventos Bacanas S/A', 'Wesley', 'eventosbacanas@gmail.com', '1234', 'Brasil', '9999999999', '99999999999');");
+            getEventosDao().updateRaw("INSERT INTO Evento(id,Organizador_id,nomeEvento,endereco,horario,dataEvento,faixaEtaria,tema) VALUES" +
+                    "(0,0,'Evento muito legal', 'Brasil', '20:00', '08/07/2017', '16', 'Legal')," +
+                    "(1,0,'Evento super legal', 'Brasil', '20:00', '21/10/2017', '16', 'Super Legal')," +
+                    "(2,1,'Evento ultra legal', 'Brasil', '20:00', '30/11/2017', '16', 'Ultra Legal');");
+
         } catch (SQLException e) {
             Log.e("Cadastrado", "erro", e);
             e.printStackTrace();
