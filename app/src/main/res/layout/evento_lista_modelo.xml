@@ -5,13 +5,14 @@
     android:layout_height="100dp"
     android:layout_margin="10dp"
     android:weightSum="1">
+    ///android:background="#efefef"
+
 
     <ImageView
         android:id="@+id/imgCidade"
         android:layout_width="89dp"
         android:layout_height="73dp"
         android:src="@drawable/ic_menu_share"></ImageView>
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,21 +22,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/lbNmEvento"
-            android:text="kkkkkkkkkkkkkkkkkkkkkkk">
+            android:text="Nome do evento">
         </TextView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/lbPreco"
-            android:text="kkkkkkkkkkkkkkkkkkkkk">
+            android:id="@+id/lbLocal"
+            android:text="Local">
         </TextView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/lbData"
-            android:text="ffffffffffffffffffff">
+            android:text="Hora e data">
         </TextView>
+
     </LinearLayout>
+
 </LinearLayout>

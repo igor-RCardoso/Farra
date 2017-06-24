@@ -38,8 +38,8 @@ public class EventoAdapter extends ArrayAdapter<Eventos> {
         Eventos evento = items.get(position);
         if (evento != null) {
             ((TextView) v.findViewById(R.id.lbNmEvento)).setText(evento.getNomeEvento());
-            ((TextView) v.findViewById(R.id.lbPreco)).setText("/" + evento.getHorario());
-            ((TextView) v.findViewById(R.id.lbData)).setText(evento.getDataEvento());
+            ((TextView) v.findViewById(R.id.lbLocal)).setText(evento.getEndereco());
+            ((TextView) v.findViewById(R.id.lbData)).setText(evento.getDataEvento() + ", " + evento.getHorario());
             //((ImageView) v.findViewById(R.id.imgCidade)).setImageResource(R.drawable.logo);
         }
         return v;
