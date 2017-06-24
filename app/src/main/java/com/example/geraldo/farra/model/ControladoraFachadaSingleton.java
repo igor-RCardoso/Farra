@@ -40,6 +40,30 @@ public final class ControladoraFachadaSingleton implements Serializable{
     private ControladoraFachadaSingleton() {
         db = new DatabaseHelper(MyApp.getContext());
         try {
+            List<Usuario> aux = db.getUsuarioDao().queryForAll();
+            for(Usuario a : aux) {
+                Log.i("Cadastrado", a.getId() + " " + a.getNome());
+            }
+            List<Organizador> aux1 = db.getOrganizadorDao().queryForAll();
+            for(Organizador a : aux1) {
+                Log.i("Cadastrado", a.getId() + " " + a.getNoeFantasia());
+            }
+            List<Eventos> aux2 = db.getEventosDao().queryForAll();
+            for(Eventos a : aux2) {
+                Log.i("Cadastrado", a.getId() + " " + a.getNomeEvento());
+            }
+            List<Ingresso> aux3 = db.getIngressoDao().queryForAll();
+            for(Ingresso a : aux3) {
+                Log.i("Cadastrado", a.getId() + " " + a.getQtdDisponivel());
+            }
+            List<ItemDeCompra> aux4 = db.getItemDeCompraDao().queryForAll();
+            for(ItemDeCompra a : aux4) {
+                Log.i("Cadastrado", a.getId() + " ");
+            }
+            List<CompraVenda> aux5 = db.getCompraVendaDao().queryForAll();
+            for(CompraVenda a : aux5){
+                Log.i("Cadastrado", a.getId() + " " + a.getAvalicao());
+            }
             daoEventos();
         } catch (SQLException e) {
             Log.e("Cadastrado", "erro_CFS construtor", e);

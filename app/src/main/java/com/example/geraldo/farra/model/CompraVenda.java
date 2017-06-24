@@ -15,7 +15,7 @@ public class CompraVenda {
     private int id;
 
     @DatabaseField(canBeNull = false)
-    private String avalicao;
+    private String avaliacao;
 
     @DatabaseField(canBeNull = false)
     private String comentario;
@@ -37,11 +37,11 @@ public class CompraVenda {
     }
 
     public String getAvalicao() {
-        return avalicao;
+        return avaliacao;
     }
 
     public void setAvalicao(String avalicao) {
-        this.avalicao = avalicao;
+        this.avaliacao = avalicao;
     }
 
     public String getComentario() {

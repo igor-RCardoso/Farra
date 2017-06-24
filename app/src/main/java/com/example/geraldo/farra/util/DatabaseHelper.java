@@ -51,7 +51,7 @@ import java.util.concurrent.Callable;
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
     private static final String databaseName = "farrago.db";
-    private static final int databaseVersion =  26;
+    private static final int databaseVersion =  29;
 
     private Dao<Usuario, Integer> usuarioDao = null;
     private RuntimeExceptionDao<Usuario, Integer> usuarioRuntimeDao = null;
@@ -97,11 +97,27 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
             getOrganizadorDao().updateRaw("INSERT INTO Organizador(id,noeFantasia,nomeReal,nomeResponsavel,emailOrg,senhaOrg,endereco,telefone,cnpj) VALUES" +
                     "(0, 'Eventos Legais S/A', 'Evento Legais S/A', 'Joesley', 'eventoslegais@gmail.com', '1234', 'Brasil', '9999999999', '99999999999')," +
                     "(1, 'Eventos Bacanas S/A', 'Eventos Bacanas S/A', 'Wesley', 'eventosbacanas@gmail.com', '1234', 'Brasil', '9999999999', '99999999999');");
-            getEventosDao().updateRaw("INSERT INTO Evento(id,Organizador_id,nomeEvento,endereco,horario,dataEvento,faixaEtaria,tema) VALUES" +
+
+            Log.i("Cadastrado","olar");
+            getEventosDao().updateRaw("INSERT INTO Evento(id,organizador_id,nomeEvento,endereco,horario,dataEvento,faixaEtaria,tema) VALUES" +
                     "(0,0,'Evento muito legal', 'Brasil', '20:00', '08/07/2017', '16', 'Legal')," +
                     "(1,0,'Evento super legal', 'Brasil', '20:00', '21/10/2017', '16', 'Super Legal')," +
                     "(2,1,'Evento ultra legal', 'Brasil', '20:00', '30/11/2017', '16', 'Ultra Legal');");
-
+            getIngressoDao().updateRaw("INSERT INTO Ingresso(id,sexo,lote,preco,qtdDisponivel,evento_id) VALUES" +
+                    "(0,'Masculino',1,40.0,213,0)," +
+                    "(1,'Feminino',2,45.0,320,1)," +
+                    "(2,'Unissex',2,35.0,230,2);");
+            getItemDeCompraDao().updateRaw("INSERT INTO itemDeCompra(id,compraVenda_id,usuario_id,ingresso_id) VALUES" +
+                    "(0,0,0,0)," +
+                    "(1,0,0,1)," +
+                    "(2,0,0,2)," +
+                    "(3,1,1,0)," +
+                    "(4,1,1,1)," +
+                    "(5,2,2,2);");
+            getCompraVendaDao().updateRaw("INSERT INTO compraVenda(id,avaliacao,comentario,usuario_id) VALUES" +
+                    "(0,'muito bom', 'muito bom', 0)," +
+                    "(1,'muito bom', 'muito bom', 1)," +
+                    "(2,'muito bom', 'muito bom', 2);");
         } catch (SQLException e) {
             Log.e("Cadastrado", "erro", e);
             e.printStackTrace();
