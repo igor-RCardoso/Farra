@@ -56,9 +56,9 @@ public class PrincipalUsuarioActivity extends AppCompatActivity
             ListView lstResultados = (ListView) findViewById(R.id.lstEventos);
 
             List<Eventos> eventos = cg.getEventos();
-            //EventoAdapter adapter =
-              //      new EventoAdapter(getBaseContext(), R.layout.evento_lista_modelo, eventos);
-            //lstResultados.setAdapter(adapter);
+            EventoAdapter adapter =
+                    new EventoAdapter(getBaseContext(), R.layout.evento_lista_modelo, eventos);
+            lstResultados.setAdapter(adapter);
         } catch (SQLException e) {
             e.printStackTrace();
         }
