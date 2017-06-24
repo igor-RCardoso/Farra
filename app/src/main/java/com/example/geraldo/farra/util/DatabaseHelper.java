@@ -3,8 +3,10 @@ package com.example.geraldo.farra.util;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.nfc.Tag;
+import android.util.Log;
 
 import com.example.geraldo.farra.R;
+import com.example.geraldo.farra.dao.OrganizadorDao;
 import com.example.geraldo.farra.model.CompraVenda;
 import com.example.geraldo.farra.model.Eventos;
 import com.example.geraldo.farra.model.Ingresso;
@@ -13,12 +15,35 @@ import com.example.geraldo.farra.model.Organizador;
 import com.example.geraldo.farra.model.Tags;
 import com.example.geraldo.farra.model.Usuario;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
+import com.j256.ormlite.dao.CloseableIterator;
+import com.j256.ormlite.dao.CloseableWrappedIterable;
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.dao.ForeignCollection;
+import com.j256.ormlite.dao.GenericRawResults;
+import com.j256.ormlite.dao.ObjectCache;
+import com.j256.ormlite.dao.RawRowMapper;
+import com.j256.ormlite.dao.RawRowObjectMapper;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
+import com.j256.ormlite.field.DataType;
+import com.j256.ormlite.field.FieldType;
+import com.j256.ormlite.stmt.DeleteBuilder;
+import com.j256.ormlite.stmt.GenericRowMapper;
+import com.j256.ormlite.stmt.PreparedDelete;
+import com.j256.ormlite.stmt.PreparedQuery;
+import com.j256.ormlite.stmt.PreparedUpdate;
+import com.j256.ormlite.stmt.QueryBuilder;
+import com.j256.ormlite.stmt.UpdateBuilder;
 import com.j256.ormlite.support.ConnectionSource;
+import com.j256.ormlite.support.DatabaseConnection;
+import com.j256.ormlite.support.DatabaseResults;
+import com.j256.ormlite.table.ObjectFactory;
 import com.j256.ormlite.table.TableUtils;
 
 import java.sql.SQLException;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.Callable;
 
 /**
  * Created by Geraldo on 22/06/2017.
@@ -26,7 +51,7 @@ import java.sql.SQLException;
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
     private static final String databaseName = "farrago.db";
-    private static final int databaseVersion =  2;
+    private static final int databaseVersion =  21;
 
     private Dao<Usuario, Integer> usuarioDao = null;
     private RuntimeExceptionDao<Usuario, Integer> usuarioRuntimeDao = null;
@@ -64,7 +89,21 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
             TableUtils.createTable(connectionSource, ItemDeCompra.class);
             TableUtils.createTable(connectionSource, Organizador.class);
             TableUtils.createTable(connectionSource, Tags.class);
+
+            getUsuarioDao().updateRaw("INSERT INTO Usuario(id,nome,user,senhaUser,emailUser,telefone,cpf,dataNascimento,tipo) VALUES" +
+                            "(0,'Fabio','Fabio','1234','fabio.godoy@ufv.br','9999999999','99999999999','05/11/1996',0)," +
+                            "(1,'Igor','Igor','1234','igor.cardoso@ufv.br','9999999999','99999999999','24/04/1994',0)," +
+                            "(2,'Julio','Julio','1234','julio.pinheiro@ufv.br','9999999999','99999999999','17/10/1996',0);");
+            getOrganizadorDao().updateRaw("INSERT INTO Organizador(id,noeFantasia,nomeReal,nomeResponsavel,emailOrg,senhaOrg,endereco,telefone,cnpj) VALUES" +
+                    "(0, 'Eventos Legais S/A', 'Evento Legais S/A', 'Joesley', 'eventoslegais@gmail.com', '1234', 'Brasil', '9999999999', '99999999999')," +
+                    "(1, 'Eventos Bacanas S/A', 'Eventos Bacanas S/A', 'Wesley', 'eventosbacanas@gmail.com', '1234', 'Brasil', '9999999999', '99999999999');");
+            getEventosDao().updateRaw("INSERT INTO Evento(id,Organizador_id,nomeEvento,endereco,horario,dataEvento,faixaEtaria,tema) VALUES" +
+                    "(0,0,'Evento muito legal', 'Brasil', '20:00', '08/07/2017', '16', 'Legal')," +
+                    "(1,0,'Evento super legal', 'Brasil', '20:00', '21/10/2017', '16', 'Super Legal')," +
+                    "(2,1,'Evento ultra legal', 'Brasil', '20:00', '30/11/2017', '16', 'Ultra Legal');");
+
         } catch (SQLException e) {
+            Log.e("Cadastrado", "erro", e);
             e.printStackTrace();
         }
     }
@@ -85,11 +124,13 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
         }
     }
 
-    public Dao<Usuario, Integer> getUsuarioDao() {
+    public Dao<Usuario, Integer> getUsuarioDao() throws SQLException {
+        if(usuarioDao == null) usuarioDao = getDao(Usuario.class);
         return usuarioDao;
     }
 
     public RuntimeExceptionDao<Usuario, Integer> getUsuarioRuntimeDao() {
+        if(usuarioRuntimeDao == null) usuarioRuntimeDao = getRuntimeExceptionDao(Usuario.class);
         return usuarioRuntimeDao;
     }
 

@@ -45,8 +45,8 @@ public class Organizador {
     private Collection<Ingresso> ingressoCollection;
 
 
-    public Organizador(){}
 
+    public Organizador(){}
 
     public Organizador(int id, String noeFantasia, String nomeReal, String nomeResponsavel, String emailOrg, String senhaOrg, String endereco, String telefone, String cnpj) {
         this.id = id;
