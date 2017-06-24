@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 import com.example.geraldo.farra.R;
 import com.example.geraldo.farra.dao.EventoDao;
@@ -23,6 +24,7 @@ import com.example.geraldo.farra.model.Eventos;
 import com.example.geraldo.farra.model.Organizador;
 import com.example.geraldo.farra.model.Usuario;
 import com.example.geraldo.farra.util.DatabaseHelper;
+import com.example.geraldo.farra.util.EventoAdapter;
 import com.example.geraldo.farra.util.MyApp;
 
 import java.sql.SQLException;
@@ -48,11 +50,19 @@ public class PrincipalUsuarioActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
-        Log.i("Cadastrado", "oi2");
-
         ControladoraFachadaSingleton cg = ControladoraFachadaSingleton.getOurInstance();
-        Log.i("Cadastrado", "oi3");
+
+        try {
+            ListView lstResultados = (ListView) findViewById(R.id.lstEventos);
+
+            List<Eventos> eventos = cg.getEventos();
+            //EventoAdapter adapter =
+              //      new EventoAdapter(getBaseContext(), R.layout.evento_lista_modelo, eventos);
+            //lstResultados.setAdapter(adapter);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override

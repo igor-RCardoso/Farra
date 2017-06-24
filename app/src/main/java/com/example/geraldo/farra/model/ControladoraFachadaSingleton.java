@@ -25,7 +25,7 @@ import java.util.Set;
 public final class ControladoraFachadaSingleton implements Serializable{
     Usuario usuario;
     DatabaseHelper db;
-
+    List<Eventos> eventos;
 
     private static final ControladoraFachadaSingleton ourInstance = new ControladoraFachadaSingleton();
 
@@ -38,29 +38,21 @@ public final class ControladoraFachadaSingleton implements Serializable{
     }
 
     private ControladoraFachadaSingleton() {
-        DatabaseHelper db = new DatabaseHelper(MyApp.getContext());
-
-        Log.i("Cadastrado", "oi1");
+        db = new DatabaseHelper(MyApp.getContext());
         try {
-            // UsuarioDao usuarioDao= new UsuarioDao(dh.getConnectionSource());
-            UsuarioDao usuarioDao = new UsuarioDao(db.getConnectionSource());
-            List<Usuario> aux3 = usuarioDao.queryForAll();
-            for(Usuario o : aux3) {
-                Log.i("Cadastrado", o.getId()+" "+o.getNome()+" "+o.getCpf());
-            }
-            OrganizadorDao organizadorDao = new OrganizadorDao(db.getConnectionSource());
-            List<Organizador> aux = organizadorDao.queryForAll();
-            for(Organizador o : aux) {
-                Log.i("Cadastrado", o.getId()+" "+o.getCnpj()+" "+o.getEndereco());
-            }
-            EventoDao eventoDao = new EventoDao(db.getConnectionSource());
-            List<Eventos> aux2 = eventoDao.queryForAll();
-            for(Eventos o : aux2) {
-                Log.i("Cadastrado", o.getId()+" "+o.getOrganizador().getNoeFantasia()+" "+o.getEndereco());
-            }
+            daoEventos();
         } catch (SQLException e) {
-            Log.e("Cadastrado", "erro", e);
+            Log.e("Cadastrado", "erro_CFS construtor", e);
             e.printStackTrace();
         }
     }
+
+    private void daoEventos() throws SQLException {
+        eventos = db.getEventosDao().queryForAll();
+    }
+
+    public List<Eventos> getEventos() throws SQLException {
+        return eventos;
+    }
+
 }
