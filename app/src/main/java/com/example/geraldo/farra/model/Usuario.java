@@ -35,12 +35,12 @@ public class Usuario {
     private String cpf;
 
     @DatabaseField(canBeNull = false)
-    private Date dataNascimento;
+    private String dataNascimento;
 
     @DatabaseField(canBeNull = false)
     private boolean tipo;
 
-    @DatabaseField(canBeNull = false)
+    @DatabaseField(canBeNull = true)
     private int reputacao;
 
     @ForeignCollectionField
@@ -108,11 +108,11 @@ public class Usuario {
         this.cpf = cpf;
     }
 
-    public Date getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
