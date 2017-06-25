@@ -27,7 +27,7 @@ public class Ingresso {
     @DatabaseField(canBeNull = false)
     private int qtdDisponivel;
 
-    @DatabaseField(foreign = true)
+    @DatabaseField(foreign = true, foreignAutoCreate = true)
     private Eventos evento;
 
 

@@ -12,8 +12,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 import com.example.geraldo.farra.R;
+import com.example.geraldo.farra.model.ControladoraFachadaSingleton;
+import com.example.geraldo.farra.model.Eventos;
+import com.example.geraldo.farra.model.ItemDeCompra;
+import com.example.geraldo.farra.util.EventoAdapter;
+import com.example.geraldo.farra.util.IngressoAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MeusIngressosActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -34,6 +43,21 @@ public class MeusIngressosActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        ControladoraFachadaSingleton cg = ControladoraFachadaSingleton.getOurInstance();
+        ListView lstResultados = (ListView) findViewById(R.id.lstIngressos);
+
+        List<ItemDeCompra> list;
+        if (cg.getUsuario().getItemDeCompraCollection() instanceof List)
+            list = (List)cg.getUsuario().getItemDeCompraCollection();
+        else
+            list = new ArrayList(cg.getUsuario().getItemDeCompraCollection());
+
+        IngressoAdapter adapter =
+                new IngressoAdapter(getBaseContext(), R.layout.ingresso_lista_modelo, list);
+        lstResultados.setAdapter(adapter);
+
+
     }
 
     @Override

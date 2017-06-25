@@ -24,9 +24,9 @@ import java.util.Set;
  */
 
 public final class ControladoraFachadaSingleton implements Serializable{
-    Usuario usuario;
-    DatabaseHelper db;
-    List<Eventos> eventos;
+    private Usuario usuario;
+    private DatabaseHelper db;
+    private List<Eventos> eventos;
 
     private static final ControladoraFachadaSingleton ourInstance = new ControladoraFachadaSingleton();
 
@@ -65,11 +65,19 @@ public final class ControladoraFachadaSingleton implements Serializable{
                 Log.i("Cadastrado", a.getId() + " " + a.getAvalicao());
             }
             daoEventos();
-            usuario = db.getUsuarioDao().queryForId(2);
+            daoUsuario();
         } catch (SQLException e) {
             Log.e("Cadastrado", "erro_CFS construtor", e);
             e.printStackTrace();
         }
+    }
+
+    private void daoUsuario() throws SQLException {
+        usuario = db.getUsuarioDao().queryForId(2);
+    }
+
+    public Usuario getUsuario(){
+        return usuario;
     }
 
 
