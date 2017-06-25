@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.geraldo.farra.R;
 import com.example.geraldo.farra.model.ControladoraFachadaSingleton;
@@ -23,6 +24,15 @@ public class CartaoCreditoActivity extends AppCompatActivity {
         ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,bandeiras);
         adaptador.setDropDownViewResource(android.R.layout.simple_spinner_item);
         spinner.setAdapter(adaptador);
+
+        Intent it = getIntent();
+        double preco = 0;
+        ListaIngressos li = (ListaIngressos) it.getSerializableExtra("lista");
+        for(int i = 0; i < li.getN(); i++) {
+            preco += li.getListaIngresso()[i].getPreco() * li.getListaQtd()[i];
+        }
+        TextView tvpreco = (TextView) findViewById(R.id.textViewPreco);
+        tvpreco.setText(preco + "");
     }
 
     public void pagar(View v) {
