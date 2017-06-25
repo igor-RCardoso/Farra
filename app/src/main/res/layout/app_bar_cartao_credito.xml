@@ -1,17 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.geraldo.farra.controller.PagamentoActivity">
+    tools:context="com.example.geraldo.farra.controller.CartaoCreditoActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
-
-
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -37,7 +34,7 @@
 
     <include
         android:id="@+id/include"
-        layout="@layout/activity_pagamento" />
+        layout="@layout/activity_cartao_credito" />
 
 
 </android.support.design.widget.CoordinatorLayout>

@@ -41,24 +41,24 @@ public final class ControladoraFachadaSingleton implements Serializable{
     private ControladoraFachadaSingleton() {
         db = new DatabaseHelper(MyApp.getContext());
         try {
-            List<Usuario> aux = db.getUsuarioDao().queryForAll();
-            for(Usuario a : aux) {
-                Log.i("Cadastrado", a.getId() + " " + a.getNome());
-            }
-            List<Organizador> aux1 = db.getOrganizadorDao().queryForAll();
-            for(Organizador a : aux1) {
-                Log.i("Cadastrado", a.getId() + " " + a.getNoeFantasia());
-                for(Eventos b : a.getEventosCollection()) {
-                    Log.i("Cadastrado", "   " + b.getId() + " " + b.getNomeEvento());
-                }
-            }
+//            List<Usuario> aux = db.getUsuarioDao().queryForAll();
+//            for(Usuario a : aux) {
+//                Log.i("Cadastrado", a.getId() + " " + a.getNome());
+//            }
+//            List<Organizador> aux1 = db.getOrganizadorDao().queryForAll();
+//            for(Organizador a : aux1) {
+//                Log.i("Cadastrado", a.getId() + " " + a.getNoeFantasia());
+//                for(Eventos b : a.getEventosCollection()) {
+//                    Log.i("Cadastrado", "   " + b.getId() + " " + b.getNomeEvento());
+//                }
+//            }
             List<Ingresso> aux3 = db.getIngressoDao().queryForAll();
             for(Ingresso a : aux3) {
-                Log.i("Cadastrado", a.getId() + " " + a.getQtdDisponivel());
+                Log.i("Cadastrado", a.getId() + " " + a.getEvento().getNomeEvento());
             }
             List<ItemDeCompra> aux4 = db.getItemDeCompraDao().queryForAll();
             for(ItemDeCompra a : aux4) {
-                Log.i("Cadastrado", a.getId() + " ");
+                Log.i("Cadastrado", a.getId() + " " + a.getUsuario().getNome());
             }
             List<CompraVenda> aux5 = db.getCompraVendaDao().queryForAll();
             for(CompraVenda a : aux5){
@@ -109,8 +109,12 @@ public final class ControladoraFachadaSingleton implements Serializable{
         try {
             db.getCompraVendaDao().create(cv);
             for(int j = 0; j < n; j++) {
-                ItemDeCompra item = new ItemDeCompra(cv,u,i[j]);
-                db.getItemDeCompraDao().create(item);
+                for(int k = 0; k < qtd[j]; k++) {
+                    if (qtd[k] > 0) {
+                        ItemDeCompra item = new ItemDeCompra(cv,u,i[j]);
+                        db.getItemDeCompraDao().create(item);
+                    }
+                }
                 i[j].setQtdDisponivel(i[j].getQtdDisponivel()-qtd[j]);
                 db.getIngressoDao().updateId(i[j],i[j].getId());
             }
