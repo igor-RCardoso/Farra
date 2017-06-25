@@ -1,10 +1,8 @@
 package com.example.geraldo.farra.controller;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,33 +12,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ListView;
 
 import com.example.geraldo.farra.R;
-import com.example.geraldo.farra.dao.EventoDao;
-import com.example.geraldo.farra.dao.OrganizadorDao;
-import com.example.geraldo.farra.dao.UsuarioDao;
-import com.example.geraldo.farra.model.ControladoraFachadaSingleton;
-import com.example.geraldo.farra.model.Eventos;
-import com.example.geraldo.farra.model.Organizador;
-import com.example.geraldo.farra.model.Usuario;
-import com.example.geraldo.farra.util.DatabaseHelper;
-import com.example.geraldo.farra.util.EventoAdapter;
-import com.example.geraldo.farra.util.MyApp;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-public class PrincipalUsuarioActivity extends AppCompatActivity
+public class MeusIngressosActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_principal_usuario);
+        setContentView(R.layout.activity_meus_ingressos);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -50,16 +34,6 @@ public class PrincipalUsuarioActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        ControladoraFachadaSingleton cg = ControladoraFachadaSingleton.getOurInstance();
-
-        ListView lstResultados = (ListView) findViewById(R.id.lstEventos);
-
-        List<Eventos> eventos = cg.getEventos();
-        EventoAdapter adapter =
-                new EventoAdapter(getBaseContext(), R.layout.evento_lista_modelo, eventos);
-        lstResultados.setAdapter(adapter);
-
     }
 
     @Override
@@ -75,7 +49,7 @@ public class PrincipalUsuarioActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.principal_usuario, menu);
+        getMenuInflater().inflate(R.menu.meus_ingressos, menu);
         return true;
     }
 
@@ -103,8 +77,7 @@ public class PrincipalUsuarioActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
-            Intent it = new Intent(getBaseContext(), MeusIngressosActivity.class);
-            startActivity(it);
+
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {

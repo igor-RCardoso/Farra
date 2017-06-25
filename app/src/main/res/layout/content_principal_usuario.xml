@@ -52,9 +52,6 @@
         android:textColor="@android:color/background_light"
         android:textSize="24sp"
         />
-
 </LinearLayout>
-
-
 
 </android.support.constraint.ConstraintLayout>

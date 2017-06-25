@@ -21,7 +21,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".controller.IngressoVirtualActivity" />
-        <activity android:name=".controller.PagamentoActivity"></activity>
+        <activity
+            android:name=".controller.MeusIngressosActivity"
+            android:label="@string/title_activity_meus_ingressos"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
