@@ -3,7 +3,7 @@
     package="com.example.geraldo.farra">
 
     <application
-        android:name="com.example.geraldo.farra.util.MyApp"
+        android:name=".util.MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -20,7 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".controller.IngressoVirtualActivity"></activity>
+        <activity android:name=".controller.IngressoVirtualActivity" />
+        <activity android:name=".controller.PagamentoActivity"></activity>
     </application>
 
 </manifest>
