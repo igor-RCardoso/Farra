@@ -19,7 +19,7 @@ public class Tags {
     @DatabaseField(canBeNull = false)
     private String nome;
 
-    @DatabaseField(foreign = true)
+    @DatabaseField(foreign = true, foreignAutoCreate = true)
     private Eventos evento;
 
     public Tags(){}

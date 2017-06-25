@@ -3,6 +3,7 @@ package com.example.geraldo.farra.controller;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,10 +18,11 @@ import android.widget.ListView;
 import com.example.geraldo.farra.R;
 import com.example.geraldo.farra.model.ControladoraFachadaSingleton;
 import com.example.geraldo.farra.model.Eventos;
+import com.example.geraldo.farra.model.Ingresso;
 import com.example.geraldo.farra.model.ItemDeCompra;
-import com.example.geraldo.farra.util.EventoAdapter;
 import com.example.geraldo.farra.util.IngressoAdapter;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,6 +54,29 @@ public class MeusIngressosActivity extends AppCompatActivity
             list = (List)cg.getUsuario().getItemDeCompraCollection();
         else
             list = new ArrayList(cg.getUsuario().getItemDeCompraCollection());
+
+
+        try {
+            Ingresso i = cg.pegaIngresso(list.get(0).getIngresso().getId());
+            Log.i("Adapter", i.getEvento().getNomeEvento());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        //List<Eventos> eventos = cg.getEventos();
+
+//        try {
+//            Ingresso ing = cg.getIngresso();
+//            Log.i("Adapter", ing.getEvento().getNomeEvento());
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+
+        if(list.get(0).getIngresso().getEvento() == null){
+            Log.i("Adapter", "Esta vazia " + list.get(0).getIngresso().getId());
+        }else{
+            Log.i("Adapter", "Nao Vazia " + list.get(0).getIngresso());
+        }
 
         IngressoAdapter adapter =
                 new IngressoAdapter(getBaseContext(), R.layout.ingresso_lista_modelo, list);

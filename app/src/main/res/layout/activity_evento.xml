@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.geraldo.farra.controller.EventoActivity"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="312dp"
+        android:layout_height="177dp"
+        app:srcCompat="@drawable/logo"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nome do evento"
+        android:textSize="24sp"
+        android:textAlignment="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+        <ImageView
+            android:id="@+id/imageLoc"
+            android:layout_width="53dp"
+            android:layout_height="36dp"
+            app:srcCompat="@drawable/localizacao"
+            />
+
+        <TextView
+            android:id="@+id/txLocalizacao"
+            android:layout_width="247dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.58"
+            android:text="Localizacao"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+        <ImageView
+            android:id="@+id/imageDt"
+            android:layout_width="53dp"
+            android:layout_height="36dp"
+            app:srcCompat="@mipmap/ic_menu_calendar"
+            />
+
+        <TextView
+            android:id="@+id/txDt"
+            android:layout_width="247dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.58"
+            android:text="Data e Horário"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:background="#820002"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        >
+
+        <TextView
+            android:id="@+id/txIn"
+            android:layout_width="213dp"
+            android:layout_height="match_parent"
+            android:text="Ingressos"
+            android:textSize="24sp"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="20dp"/>
+
+        <ImageView
+            android:id="@+id/imageCarrinho"
+            android:layout_width="53dp"
+            android:layout_height="36dp"
+            app:srcCompat="@mipmap/carrinho"
+            />
+
+        <TextView
+            android:id="@+id/txPreco"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Preço"
+            android:textSize="18sp"
+            android:textColor="#ffffff"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="51dp"
+                android:layout_height="wrap_content"
+                android:text="Lote:"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/txLote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:prompt="@strings/sprintSexo"/>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inteira"
+                android:checked="true"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Meia"/>
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/txPrecoIndividual"
+            android:layout_width="220dp"
+            android:layout_height="match_parent"
+            android:text="Preço"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -27,9 +27,8 @@ public class Ingresso {
     @DatabaseField(canBeNull = false)
     private int qtdDisponivel;
 
-    @DatabaseField(foreign = true, foreignAutoCreate = true)
+    @DatabaseField(canBeNull = false, foreign = true, foreignAutoCreate = true, foreignColumnName = "id")
     private Eventos evento;
-
 
     @ForeignCollectionField
     private Collection<ItemDeCompra> itemDeCompraCollection;
@@ -37,7 +36,14 @@ public class Ingresso {
 
     public Ingresso(){}
 
-
+    public Ingresso(int id, String sexo, int lote, double preco, int qtdDisponivel, Eventos evento) {
+        this.id = id;
+        this.sexo = sexo;
+        this.lote = lote;
+        this.preco = preco;
+        this.qtdDisponivel = qtdDisponivel;
+        this.evento = evento;
+    }
 
     public int getId() {
         return id;
@@ -93,5 +99,16 @@ public class Ingresso {
 
     public void setItemDeCompraCollection(Collection<ItemDeCompra> itemDeCompraCollection) {
         this.itemDeCompraCollection = itemDeCompraCollection;
+    }
+
+    @Override
+    public String toString() {
+        return "Ingresso{" +
+                "sexo='" + sexo + '\'' +
+                ", lote='" + lote + '\'' +
+                ", preco='" + preco + '\'' +
+                ", qtdDisponivel='" + qtdDisponivel + '\'' +
+                ", evento=" + evento +
+                '}';
     }
 }

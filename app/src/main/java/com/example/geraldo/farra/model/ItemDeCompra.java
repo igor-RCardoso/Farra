@@ -14,10 +14,10 @@ public class ItemDeCompra {
     @DatabaseField(foreign = true, foreignAutoCreate = true)
     private CompraVenda compraVenda;
 
-    @DatabaseField(foreign = true, foreignAutoCreate = true)
+    @DatabaseField(foreign = true, foreignAutoCreate = true, foreignColumnName = "id")
     private Usuario usuario;
 
-    @DatabaseField(foreign = true, foreignAutoCreate = true)
+    @DatabaseField(foreign = true, foreignAutoCreate = true, foreignColumnName = "id")
     private Ingresso ingresso;
 
     public ItemDeCompra(){}

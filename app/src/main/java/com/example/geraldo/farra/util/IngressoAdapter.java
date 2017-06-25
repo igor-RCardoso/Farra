@@ -37,8 +37,9 @@ public class IngressoAdapter extends ArrayAdapter<ItemDeCompra> {
             LayoutInflater vi = (LayoutInflater)ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = vi.inflate(R.layout.evento_lista_modelo, null);
         }
-        Log.i("Adapter", "Chegou aqui");
+
         ItemDeCompra itemDeCompra = items.get(position);
+        Log.i("Adapter", "Chegou aqui24");
         Log.i("Adapter", itemDeCompra.getIngresso().getEvento().getNomeEvento());
         if (itemDeCompra != null) {
             ((TextView) v.findViewById(R.id.lbNmEvento)).setText(itemDeCompra.getIngresso().getEvento().getNomeEvento());

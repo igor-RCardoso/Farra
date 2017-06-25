@@ -51,7 +51,7 @@ import java.util.concurrent.Callable;
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
     private static final String databaseName = "farrago.db";
-    private static final int databaseVersion =  30;
+    private static final int databaseVersion =  44;
 
     private Dao<Usuario, Integer> usuarioDao = null;
     private RuntimeExceptionDao<Usuario, Integer> usuarioRuntimeDao = null;
@@ -145,7 +145,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
         return usuarioDao;
     }
 
-    public RuntimeExceptionDao<Usuario, Integer> getUsuarioRuntimeDao() {
+    public RuntimeExceptionDao<Usuario, Integer> getUsuarioRuntimeDao() throws SQLException {
         if(usuarioRuntimeDao == null) usuarioRuntimeDao = getRuntimeExceptionDao(Usuario.class);
         return usuarioRuntimeDao;
     }
@@ -155,7 +155,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
         return compraVendaDao;
     }
 
-    public RuntimeExceptionDao<CompraVenda, Integer> getCompraVendaRuntimeDao() {
+    public RuntimeExceptionDao<CompraVenda, Integer> getCompraVendaRuntimeDao()  throws SQLException {
         if(compraVendaRuntimeDao == null) compraVendaRuntimeDao = getRuntimeExceptionDao(CompraVenda.class);
         return compraVendaRuntimeDao;
     }
@@ -165,7 +165,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
         return eventosDao;
     }
 
-    public RuntimeExceptionDao<Eventos, Integer> getEventosRuntimeDao() {
+    public RuntimeExceptionDao<Eventos, Integer> getEventosRuntimeDao()  throws SQLException {
         if(eventosRuntimeDao == null) eventosRuntimeDao = getRuntimeExceptionDao(Eventos.class);
         return eventosRuntimeDao;
     }
@@ -185,7 +185,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
         return itemDeCompraDao;
     }
 
-    public RuntimeExceptionDao<ItemDeCompra, Integer> getItemDeCompraRuntimeDao() {
+    public RuntimeExceptionDao<ItemDeCompra, Integer> getItemDeCompraRuntimeDao()  throws SQLException {
         if(itemDeCompraRuntimeDao == null) itemDeCompraRuntimeDao = getRuntimeExceptionDao(ItemDeCompra.class);
         return itemDeCompraRuntimeDao;
     }

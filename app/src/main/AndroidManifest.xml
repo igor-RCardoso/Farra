@@ -24,7 +24,8 @@
         <activity
             android:name=".controller.MeusIngressosActivity"
             android:label="@string/title_activity_meus_ingressos"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".controller.EventoActivity"></activity>
     </application>
 
 </manifest>
