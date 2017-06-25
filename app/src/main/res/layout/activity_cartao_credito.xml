@@ -83,7 +83,8 @@
         android:layout_alignStart="@+id/textView13"
         android:layout_marginBottom="8dp"
         android:layout_alignTop="@+id/editTextValidade"
-        android:layout_alignEnd="@+id/editTextNumCartao" />
+        android:layout_alignEnd="@+id/editTextNumCartao"
+        android:prompt="@string/texto_combo"/>
 
     <Button
         android:id="@+id/button2"
@@ -96,5 +97,5 @@
         android:textColor="#ffffff"
         android:background="#820002"
         android:text="Pagar"
-        android:onClick=""/>
+        android:onClick="pagar"/>
 </RelativeLayout>
