@@ -8,4 +8,19 @@
     tools:context="com.example.geraldo.farra.controller.MeusIngressosActivity"
     tools:showIn="@layout/app_bar_meus_ingressos">
 
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ListView
+            android:id="@+id/lstIngressos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="#efefef">
+        </ListView>
+    </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>
