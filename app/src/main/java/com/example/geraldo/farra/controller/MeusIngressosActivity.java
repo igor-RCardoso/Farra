@@ -56,12 +56,12 @@ public class MeusIngressosActivity extends AppCompatActivity
             list = new ArrayList(cg.getUsuario().getItemDeCompraCollection());
 
 
-        try {
-            Ingresso i = cg.pegaIngresso(list.get(0).getIngresso().getId());
-            Log.i("Adapter", i.getEvento().getNomeEvento());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            //Ingresso i = cg.pegaIngresso(list.get(0).getIngresso().getId());
+//            Log.i("Adapter", i.getEvento().getNomeEvento());
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
 
         //List<Eventos> eventos = cg.getEventos();
 

@@ -11,12 +11,11 @@
         android:id="@+id/imageView2"
         android:layout_width="312dp"
         android:layout_height="177dp"
-        app:srcCompat="@drawable/logo"
         android:layout_gravity="center_horizontal"
-        />
+        android:src="@mipmap/logo"/>
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/txNmEvento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Nome do evento"
@@ -31,8 +30,7 @@
             android:id="@+id/imageLoc"
             android:layout_width="53dp"
             android:layout_height="36dp"
-            app:srcCompat="@drawable/localizacao"
-            />
+            app:srcCompat="@mipmap/localizacao"/>
 
         <TextView
             android:id="@+id/txLocalizacao"
@@ -99,60 +97,71 @@
             android:textColor="#ffffff"/>
     </LinearLayout>
 
-
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:weightSum="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:orientation="vertical"
-        >
+        android:orientation="horizontal">
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical"
+            >
+            <Spinner
+                android:id="@+id/spinnerLote"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"/>
+
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"/>
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Inteira"
+                    android:checked="true"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Meia"/>
+            </RadioGroup>
 
             <TextView
-                android:layout_width="51dp"
-                android:layout_height="wrap_content"
-                android:text="Lote:"
+                android:id="@+id/txPrecoIndividual"
+                android:layout_width="220dp"
+                android:layout_height="match_parent"
+                android:text="Preço"
                 android:textSize="18sp" />
-            <TextView
-                android:id="@+id/txLote"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
         </LinearLayout>
-
-
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="220dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:prompt="@strings/sprintSexo"/>
-
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <RadioButton
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/activity_horizontal_margin">
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Inteira"
-                android:checked="true"/>
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Meia"/>
-        </RadioGroup>
-
-        <TextView
-            android:id="@+id/txPrecoIndividual"
-            android:layout_width="220dp"
-            android:layout_height="match_parent"
-            android:text="Preço"
-            android:textSize="18sp" />
+                android:text="+"/>
+        </LinearLayout>
     </LinearLayout>
-
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="209dp"
+        android:layout_height="wrap_content"
+        android:text="Comprar"
+        android:background="#820002"
+        android:textColor="#ffffff"
+        android:onClick="pagar"
+        android:layout_gravity="center"/>
 
 
 </LinearLayout>

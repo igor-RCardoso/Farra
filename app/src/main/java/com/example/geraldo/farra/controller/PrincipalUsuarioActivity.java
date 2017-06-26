@@ -1,5 +1,6 @@
 package com.example.geraldo.farra.controller;
 
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.geraldo.farra.R;
@@ -27,6 +29,7 @@ import com.example.geraldo.farra.model.Usuario;
 import com.example.geraldo.farra.util.DatabaseHelper;
 import com.example.geraldo.farra.util.EventoAdapter;
 import com.example.geraldo.farra.util.MyApp;
+import com.j256.ormlite.stmt.query.In;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -34,6 +37,7 @@ import java.util.List;
 
 public class PrincipalUsuarioActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    Intent it;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +60,24 @@ public class PrincipalUsuarioActivity extends AppCompatActivity
         ListView lstResultados = (ListView) findViewById(R.id.lstEventos);
 
         List<Eventos> eventos = cg.getEventos();
-        EventoAdapter adapter =
+        final EventoAdapter adapter =
                 new EventoAdapter(getBaseContext(), R.layout.evento_lista_modelo, eventos);
         lstResultados.setAdapter(adapter);
 
+        lstResultados.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+                Eventos evento = adapter.getItem(position);
+                Log.e("olar",evento.getNomeEvento());
+                it = new Intent(getBaseContext(), EventoActivity.class);
+                it.putExtra("evento", evento);
+                startActivity(it);
+            }
+        });
     }
+
+
 
     @Override
     public void onBackPressed() {

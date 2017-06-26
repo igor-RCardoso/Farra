@@ -3,6 +3,7 @@ package com.example.geraldo.farra.controller;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RadioGroup;
@@ -18,7 +19,7 @@ public class PagamentoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pagamento);
         ImageButton botaoImagem2 = (ImageButton) findViewById(R.id.imageButton);
-        botaoImagem2.setImageResource(R.drawable.back);
+//        botaoImagem2.setImageResource(R.mipmap.back);
         Intent it = getIntent();
         double preco = 0;
         ListaIngressos li = (ListaIngressos) it.getSerializableExtra("lista");
@@ -37,6 +38,7 @@ public class PagamentoActivity extends AppCompatActivity {
         Intent it = getIntent();
         ListaIngressos li = (ListaIngressos) it.getSerializableExtra("lista");
         RadioGroup rg = (RadioGroup) v.findViewById(R.id.radioGroup);
+        Log.i("olar",rg.getId()+"");
         if(rg.getCheckedRadioButtonId() == R.id.radioButton2) {
             Intent it2 = new Intent(this, CartaoCreditoActivity.class);
             it2.putExtra("lista",li);

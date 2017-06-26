@@ -24,7 +24,7 @@
                 android:layout_centerVertical="true"
                 android:background="@android:color/transparent"
                 app:layout_anchor="@+id/include"
-                app:srcCompat="@drawable/back"
+                app:srcCompat="@mipmap/back"
                 android:onClick="fechar" />
 
         </android.support.v7.widget.Toolbar>

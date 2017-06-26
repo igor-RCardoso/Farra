@@ -44,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:drawableRight="@drawable/cartao"
+                android:drawableRight="@mipmap/cartao"
                 android:checked="true"/>
 
             <RadioButton
@@ -52,7 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:drawableRight="@drawable/boleto"
+                android:drawableRight="@mipmap/boleto"
                 android:text="" />
         </LinearLayout>
 

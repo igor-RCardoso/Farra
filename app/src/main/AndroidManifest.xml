@@ -25,7 +25,21 @@
             android:name=".controller.MeusIngressosActivity"
             android:label="@string/title_activity_meus_ingressos"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".controller.CartaoCreditoActivity"></activity>
+
+        <activity
+            android:name=".controller.EventoActivity"
+            android:label="@string/title_activity_pagina_evento"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".controller.PagamentoActivity"
+            android:label="@string/title_activity_pagamento"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".controller.CartaoCreditoActivity"
+            android:label="@string/title_activity_cartao_credito"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

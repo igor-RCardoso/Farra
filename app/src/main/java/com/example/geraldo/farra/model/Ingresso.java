@@ -4,6 +4,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 /**
@@ -11,7 +12,7 @@ import java.util.Collection;
  */
 
 @DatabaseTable(tableName = "ingresso")
-public class Ingresso {
+public class Ingresso implements Serializable {
     @DatabaseField(generatedId = true)
     private int id;
 

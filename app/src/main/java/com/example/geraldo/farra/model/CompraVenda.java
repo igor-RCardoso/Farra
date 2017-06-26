@@ -4,13 +4,14 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 /**
  * Created by Geraldo on 22/06/2017.
  */
 @DatabaseTable(tableName = "compraVenda")
-public class CompraVenda {
+public class CompraVenda implements Serializable{
     @DatabaseField(generatedId = true)
     private int id;
 

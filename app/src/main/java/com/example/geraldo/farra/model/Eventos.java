@@ -44,7 +44,7 @@ public class Eventos implements Serializable{
     @ForeignCollectionField
     private Collection<Tags> tagsCollection;
 
-    @ForeignCollectionField
+    @ForeignCollectionField (eager = true)
     private Collection<Ingresso> ingressoCollection;
 
     public Eventos(){}
