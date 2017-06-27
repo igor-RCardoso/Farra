@@ -1,5 +1,6 @@
 package com.example.geraldo.farra.controller;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.geraldo.farra.R;
@@ -78,10 +80,21 @@ public class MeusIngressosActivity extends AppCompatActivity
             Log.i("Adapter", "Nao Vazia " + list.get(0).getIngresso());
         }
 
-        IngressoAdapter adapter =
+        final IngressoAdapter adapter =
                 new IngressoAdapter(getBaseContext(), R.layout.ingresso_lista_modelo, list);
         lstResultados.setAdapter(adapter);
 
+        lstResultados.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+                ItemDeCompra item = adapter.getItem(position);
+                Log.e("olar",item.getId()+"");
+                Intent it = new Intent(getBaseContext(), IngressoVirtualActivity.class);
+                it.putExtra("item", item);
+                startActivity(it);
+            }
+        });
 
     }
 
@@ -124,9 +137,10 @@ public class MeusIngressosActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            Intent it = new Intent(getBaseContext(), PrincipalUsuarioActivity.class);
+            startActivity(it);
+            finish();
         } else if (id == R.id.nav_gallery) {
-
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {

@@ -51,7 +51,7 @@ import java.util.concurrent.Callable;
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
     private static final String databaseName = "farrago.db";
-    private static final int databaseVersion =  44;
+    private static final int databaseVersion =  48;
 
     private Dao<Usuario, Integer> usuarioDao = null;
     private RuntimeExceptionDao<Usuario, Integer> usuarioRuntimeDao = null;

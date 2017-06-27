@@ -20,7 +20,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".controller.IngressoVirtualActivity" />
+        <activity
+            android:name=".controller.IngressoVirtualActivity"
+            android:label="@string/title_activity_ingresso_virtual"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".controller.MeusIngressosActivity"
             android:label="@string/title_activity_meus_ingressos"

@@ -111,14 +111,23 @@ public final class ControladoraFachadaSingleton implements Serializable{
             for(int j = 0; j < n; j++) {
                 for(int k = 0; k < qtd[j]; k++) {
                     if (qtd[k] > 0) {
-                        ItemDeCompra item = new ItemDeCompra(cv,u,i[j]);
-                        db.getItemDeCompraDao().create(item);
+                        Log.i("Pagamento", "caiu aqui");
+                        ItemDeCompra item = new ItemDeCompra(cv,u,i[j]," ");
+                        db.getItemDeCompraDao().updateRaw("INSERT INTO itemDeCompra(compraVenda_id,usuario_id,ingresso_id) VALUES" +
+                                "("+ cv.getId() +","+u.getId()+","+i[j].getId()+");");
                     }
                 }
+                Log.i("Pagamento", "caiu aqui2");
                 i[j].setQtdDisponivel(i[j].getQtdDisponivel()-qtd[j]);
                 db.getIngressoDao().updateId(i[j],i[j].getId());
+                Log.i("Pagamento", "caiu aqui3");
+            }
+            List<ItemDeCompra> aux4 = db.getItemDeCompraDao().queryForAll();
+            for(ItemDeCompra a : aux4) {
+                Log.i("Pagamento", a.getId() + " " + a.getUsuario().getNome() + " " + a.getIngresso().getEvento().getNomeEvento());
             }
         } catch (SQLException e) {
+            Log.e("Pagamento", "erro", e);
             e.printStackTrace();
         }
         return true;

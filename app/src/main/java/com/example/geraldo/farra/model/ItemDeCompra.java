@@ -13,6 +13,9 @@ public class ItemDeCompra implements Serializable {
     @DatabaseField(generatedId = true)
     private int id;
 
+    @DatabaseField(canBeNull = true)
+    private String marcador;
+
     @DatabaseField(foreign = true, foreignAutoCreate = true)
     private CompraVenda compraVenda;
 
@@ -24,10 +27,11 @@ public class ItemDeCompra implements Serializable {
 
     public ItemDeCompra(){}
 
-    public ItemDeCompra(CompraVenda compraVenda, Usuario usuario, Ingresso ingresso) {
+    public ItemDeCompra(CompraVenda compraVenda, Usuario usuario, Ingresso ingresso, String marcador) {
         this.compraVenda = compraVenda;
         this.usuario = usuario;
         this.ingresso = ingresso;
+        this.marcador = marcador;
     }
 
     public int getId() {

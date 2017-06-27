@@ -1,9 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.geraldo.farra.controller.IngressoVirtualActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="68dp"
+        app:srcCompat="@mipmap/qrcode" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        app:srcCompat="@mipmap/localizacao"
+        android:layout_below="@+id/imageView3"
+        android:layout_marginLeft="50dp"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imageView4"
+        android:layout_below="@+id/imageView4"
+        android:layout_marginTop="22dp"
+        app:srcCompat="@mipmap/horario" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView5"
+        android:layout_marginTop="20dp"
+        app:srcCompat="@mipmap/info"
+        android:layout_alignStart="@+id/imageView5" />
+
+    <TextView
+        android:id="@+id/textViewLocalizacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageView4"
+        android:layout_marginStart="25dp"
+        android:layout_toEndOf="@+id/imageView4"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textViewHorario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textViewLocalizacao"
+        android:layout_alignTop="@+id/imageView5"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textViewInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textViewHorario"
+        android:layout_alignTop="@+id/imageView7"
+        android:text="TextView" />
+
+</RelativeLayout>

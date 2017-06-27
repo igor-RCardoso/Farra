@@ -122,6 +122,7 @@ public class PrincipalUsuarioActivity extends AppCompatActivity
         } else if (id == R.id.nav_gallery) {
             Intent it = new Intent(getBaseContext(), MeusIngressosActivity.class);
             startActivity(it);
+            finish();
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {

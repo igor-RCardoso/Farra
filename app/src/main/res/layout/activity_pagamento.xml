@@ -26,36 +26,33 @@
         android:text="" />
 
     <RadioGroup
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="53dp"
+        android:layout_marginTop="49dp"
         android:id="@+id/radioGroup"
         android:layout_below="@+id/textView3"
+        android:layout_alignStart="@+id/textView5"
         android:layout_alignEnd="@+id/textView4"
-        android:layout_alignStart="@+id/textView5">
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/radioButton2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableRight="@mipmap/cartao"
-                android:checked="true"/>
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:drawableRight="@mipmap/cartao"
+            android:gravity="left" />
 
-            <RadioButton
-                android:id="@+id/radioButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableRight="@mipmap/boleto"
-                android:text="" />
-        </LinearLayout>
-
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableRight="@mipmap/boleto"
+            android:gravity="right"
+            android:text="" />
     </RadioGroup>
 
     <Button

@@ -31,7 +31,7 @@ public class Ingresso implements Serializable {
     @DatabaseField(canBeNull = false, foreign = true, foreignAutoCreate = true, foreignColumnName = "id")
     private Eventos evento;
 
-    @ForeignCollectionField
+    @ForeignCollectionField (eager = true)
     private Collection<ItemDeCompra> itemDeCompraCollection;
 
 

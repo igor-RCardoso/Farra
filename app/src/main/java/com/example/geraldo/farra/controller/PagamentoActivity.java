@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.geraldo.farra.R;
 import com.example.geraldo.farra.model.ControladoraFachadaSingleton;
@@ -19,7 +20,7 @@ public class PagamentoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pagamento);
         ImageButton botaoImagem2 = (ImageButton) findViewById(R.id.imageButton);
-//        botaoImagem2.setImageResource(R.mipmap.back);
+        botaoImagem2.setImageResource(R.mipmap.back);
         Intent it = getIntent();
         double preco = 0;
         ListaIngressos li = (ListaIngressos) it.getSerializableExtra("lista");
@@ -37,16 +38,21 @@ public class PagamentoActivity extends AppCompatActivity {
     public void pagar(View v) {
         Intent it = getIntent();
         ListaIngressos li = (ListaIngressos) it.getSerializableExtra("lista");
-        RadioGroup rg = (RadioGroup) v.findViewById(R.id.radioGroup);
+        RadioGroup rg = (RadioGroup) findViewById(R.id.radioGroup);
         Log.i("olar",rg.getId()+"");
+        Log.i("Pagamento","oi");
         if(rg.getCheckedRadioButtonId() == R.id.radioButton2) {
             Intent it2 = new Intent(this, CartaoCreditoActivity.class);
             it2.putExtra("lista",li);
+            Log.i("Pagamento","oi1");
             startActivity(it2);
         } else if (rg.getCheckedRadioButtonId() == R.id.radioButton){
+            Log.i("Pagamento","oi2");
             ControladoraFachadaSingleton.getOurInstance().comprarIngresso(ControladoraFachadaSingleton.getOurInstance().getUsuario(),
                     li.getListaIngresso(),li.getListaQtd(),li.getN());
+            Toast.makeText(this,"Pagamento feito no boleto", Toast.LENGTH_SHORT).show();
         }
+        Log.i("Pagamento","tchau");
         finish();
     }
 }
